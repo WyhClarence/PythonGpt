@@ -223,15 +223,15 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
+        # 使用 fine-tuned 模型进行响应
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
             messages=[{"role": "user", "content": user_message}]
         )
-        # 提取返回内容
-        chat_response = response['choices'][0]['message']['content']
 
-        # 返回时明确指定 utf-8 编码
-        return jsonify({"response": chat_response}), 200
+        # 提取 ChatGPT 的回答
+        chat_response = response['choices'][0]['message']['content']  # 访问内容正确位置
+        return chat_response
     except Exception as e:
         # 返回时明确指定 utf-8 编码，并转换为字符串以避免编码错误
         return jsonify({"error": str(e)}), 500
