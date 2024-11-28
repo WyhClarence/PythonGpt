@@ -223,13 +223,10 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
-        # 使用 OpenAI API 调用 Fine-Tuned 模型
-        response = openai.completions.create(
+        response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-            prompt=user_message,
-            max_tokens=150
+            messages=[{"role": "user", "content": user_message}]
         )
-
         # 提取返回内容
         chat_response = response['choices'][0]['message']['content']
 
