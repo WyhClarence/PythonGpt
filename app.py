@@ -224,11 +224,10 @@ def chat():
     user_message = request.json.get('message')
     try:
         # 使用 OpenAI API 调用 Fine-Tuned 模型
-        response = openai.ChatCompletion.create(
-            model=FINE_TUNED_MODEL,  # 使用 Fine-Tuned 模型的 ID
-            messages=[
-                {"role": "user", "content": user_message}
-            ]
+        response = openai.completions.create(
+            model=FINE_TUNED_MODEL,
+            prompt=user_message,
+            max_tokens=150
         )
 
         # 提取返回内容
