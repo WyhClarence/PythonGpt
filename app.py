@@ -229,7 +229,7 @@ def chat():
         )
 
         # 打印返回的完整 response 数据
-        print(f"Response from OpenAI: {response}")
+        logger.debug(f"Response from OpenAI: {response}")
 
         # 获取聊天内容（正确的访问方式）
         chat_response = response.choices[0].message['content']
