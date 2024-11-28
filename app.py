@@ -223,16 +223,15 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
-        # 使用显式实例化客户端调用 API
-        response = openai.ChatCompletion.create(
+        # 使用新 API 调用方式
+        response = openai.chat_completions.create(
             model=FINE_TUNED_MODEL,
             messages=[
                 {"role": "user", "content": user_message}
             ]
         )
 
-        # 提取回复内容
-        # ChatCompletion.create 返回一个 ChatCompletion 对象，所以要从 choices 中取内容
+        # 提取返回内容
         chat_response = response['choices'][0]['message']['content']
 
         # 返回时明确指定 utf-8 编码
