@@ -223,9 +223,9 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
-        # 使用新 API 调用方式
-        response = openai.chat_completions.create(
-            model=FINE_TUNED_MODEL,
+        # 使用 OpenAI API 调用 Fine-Tuned 模型
+        response = openai.ChatCompletion.create(
+            model=FINE_TUNED_MODEL,  # 使用 Fine-Tuned 模型的 ID
             messages=[
                 {"role": "user", "content": user_message}
             ]
