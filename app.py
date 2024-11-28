@@ -224,7 +224,7 @@ def chat():
     user_message = request.json.get('message')
     try:
         response = openai.chat.completions.create(
-            model=fine_tuned_model_id,
+            model=FINE_TUNED_MODEL,
             messages=[{"role": "user", "content": user_message}]
         )
 
