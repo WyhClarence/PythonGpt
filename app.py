@@ -232,7 +232,9 @@ def chat():
         logger.debug(f"Response from OpenAI: {response}")
 
         # 获取聊天内容，正确访问 message.content
-        chat_response = response['choices'][0].message.content
+        # chat_response = response['choices'][0].message.content
+        # 获取聊天内容的正确方法
+        chat_response = response['choices'][0].message['content']
 
         return jsonify({"response": chat_response}), 200
 
