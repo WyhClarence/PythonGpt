@@ -228,7 +228,8 @@ def chat():
             model=FINE_TUNED_MODEL,
             messages=[{"role": "user", "content": user_message}]
         )
-
+        # 打印返回的完整 response 数据以供调试
+        print(f"Response from OpenAI: {response}")
         # 确保从返回的response中提取正确的字段
         chat_response = response['choices'][0]['message']['content']
 
