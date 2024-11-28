@@ -33,7 +33,8 @@ def chat_page():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with ChatGPT</title>
+    <title>ChatGPT By Wong</title>
+    <link rel="icon" href="https://hktest.ricepon.com/ricepon-service/favicon.ico" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
     <!-- 引入样式 -->
@@ -124,10 +125,19 @@ def chat_page():
         margin-top: 10px;
         margin-left: auto;
     }
+
+    .title {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        font-size: 40px;
+        text-shadow: 0 4px 6px #f9abab;
+    }
 </style>
 
 <body>
     <div id="app">
+        <div class="title">ChatGPT By Wong</div>
         <div class="message-body">
             <div v-for="item,index in listInfo" :key="index" class="message-cell"
                 :class="{you:item.type==0,gpt:item.type==1}">
@@ -162,6 +172,7 @@ def chat_page():
                         return this.$message.error('Please enter a message!');
                     }
                     this.loading = true;
+                    this.message = "";
                     this.listInfo.push({
                         text: message,
                         type: 0
@@ -213,7 +224,7 @@ def chat():
     user_message = request.json.get('message')
     try:
         # 使用显式实例化客户端调用 API
-        response = client.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=FINE_TUNED_MODEL,
             messages=[
                 {"role": "user", "content": user_message}
