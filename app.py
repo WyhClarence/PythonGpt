@@ -229,11 +229,12 @@ def chat():
             messages=[{"role": "user", "content": user_message}]
         )
 
-        # 提取 ChatGPT 的回答
-        chat_response = response['choices'][0]['message']['content']  # 访问内容正确位置
-        return chat_response
+        # 确保从返回的response中提取正确的字段
+        chat_response = response['choices'][0]['message']['content']
+
+        return jsonify({"response": chat_response}), 200
+
     except Exception as e:
-        # 返回时明确指定 utf-8 编码，并转换为字符串以避免编码错误
         return jsonify({"error": str(e)}), 500
 
 # 运行 Flask 应用
