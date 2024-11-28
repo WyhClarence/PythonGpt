@@ -223,15 +223,16 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
-        # 使用 fine-tuned 模型进行响应
         response = openai.chat.completions.create(
-            model=FINE_TUNED_MODEL,
+            model=fine_tuned_model_id,
             messages=[{"role": "user", "content": user_message}]
         )
-        # 打印返回的完整 response 数据以供调试
+
+        # 打印返回的完整 response 数据
         print(f"Response from OpenAI: {response}")
-        # 确保从返回的response中提取正确的字段
-        chat_response = response['choices'][0]['message']['content']
+
+        # 获取聊天内容（正确的访问方式）
+        chat_response = response.choices[0].message['content']
 
         return jsonify({"response": chat_response}), 200
 
