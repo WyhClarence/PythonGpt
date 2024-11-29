@@ -1,5 +1,5 @@
 import os
-from openai import OpenAI
+import openai
 import logging
 import json
 from flask import Flask, request, jsonify, render_template_string
@@ -11,7 +11,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 app = Flask(__name__)
 key = os.getenv("OPENAI_API_KEY")
 # 实例化一个 OpenAI 客户端
-client = OpenAI(api_key=key)
+openai.api_key = key
 # 读取 Fine-Tuned 模型的 ID
 with open("fine_tuned_model.json", "r") as f:
     fine_tuned_data = json.load(f)
@@ -227,12 +227,9 @@ def chat_page():
 def chat():
     user_message = request.json.get('message')
     try:
-        # 使用显式实例化客户端调用 API
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-            messages=[
-                {"role": "user", "content": user_message}
-            ]
+            messages=[{"role": "user", "content": user_message}]
         )
 
         # 提取回复内容
@@ -248,7 +245,6 @@ def chat():
         return jsonify({"response": content}), 200
 
     except Exception as e:
-        # 返回时明确指定 utf-8 编码，并转换为字符串以避免编码错误
         return jsonify({"error": str(e)}), 500
 
 # 运行 Flask 应用
