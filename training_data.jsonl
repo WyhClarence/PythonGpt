@@ -31,3 +31,102 @@
 {"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
 {"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
 {"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
+{"messages": [{"role": "user", "content": "我们的餐饮 SaaS 系统支持哪些功能？"}, {"role": "assistant", "content": "我们的餐饮 SaaS 系统支持 QR 码点餐、会员管理、外卖对接、后厨订单管理等多种功能，帮助餐厅高效管理日常运营。"}]}
+{"messages": [{"role": "user", "content": "如何在系统中添加新的菜单项？"}, {"role": "assistant", "content": "要添加新的菜单项，您需要登录系统管理后台，进入“菜单管理”页面，然后点击“添加菜单项”按钮，填写相关信息后保存即可。"}]}
+{"messages": [{"role": "user", "content": "怎麼添加打印機？"}, {"role": "assistant", "content": "進入APP首頁，點擊<打印管理>，點擊標題欄右上角+號即可自動搜索打印機"}]}
+{"messages": [{"role": "user", "content": "我想修改食品價格？"}, {"role": "assistant", "content": "你想修改哪個食品的價格呢？"}]}
+{"messages": [{"role": "user", "content": "怎麼新增折扣？"}, {"role": "assistant", "content": "進入APP首頁，點擊<折扣管理>"}]}
+{"messages": [{"role": "user", "content": "清不了機是為什麼？"}, {"role": "assistant", "content": "需要描述詳情的情況"}]}
+{"messages": [{"role": "user", "content": "Kpay結賬失敗怎麼處理？"}, {"role": "assistant", "content": "可以保留失敗記錄截圖，發給維護人員，先使用kpay直接收款，後續有專門的維護人員幫您處理。"}]}
+{"messages": [{"role": "user", "content": "打印機無法打印？"}, {"role": "assistant", "content": "請檢查打印機網絡是否連接，是否缺紙，電源是否開啟"}]}
+{"messages": [{"role": "user", "content": "報表數據顯示錯誤？"}, {"role": "assistant", "content": "請聯繫維護人員"}]}
+{"messages": [{"role": "user", "content": "修改廚房單字體大小？"}, {"role": "assistant", "content": "進入APP首頁，點擊<配置列表>，搜索廚房單字體大小，進行配置"}]}
+{"messages": [{"role": "user", "content": "無法登錄？"}, {"role": "assistant", "content": "請詳細描述問題，或將問題截圖發送給維護人員"}]}
