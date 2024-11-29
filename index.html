@@ -18,6 +18,7 @@
         width: 100%;
         height: 100vh;
         background-color: #F0F0F6;
+        --theme-color: rgb(10, 137, 226);
     }
 
     body::-webkit-scrollbar {
@@ -44,6 +45,8 @@
         min-height: 100%;
         margin-left: 50%;
         transform: translateX(-50%);
+        padding-bottom: 250px;
+        background-color: #F0F0F6;
     }
 
     .message-cell {
@@ -69,6 +72,15 @@
         font-size: 16px;
     }
 
+    .message-cell.you .avatar {
+        background-color: #FFF;
+    }
+
+    .message-cell.gpt .avatar {
+        background-color: var(--theme-color);
+        color: #FFF;
+    }
+
     .message-cell.gpt .message {
         background-color: #FFF;
         padding: 10px;
@@ -92,7 +104,18 @@
         transform: translateX(-50%);
     }
 
-    .message-input .el-button {
+    .message-input textarea {
+        resize: none;
+        border: 1px soid #efefef;
+        border-radius: 4px;
+        padding: 6px;
+    }
+
+    .message-input textarea:focus-visible {
+        outline: none;
+    }
+
+    .message-input .btn-cell {
         margin-top: 10px;
         margin-left: auto;
     }
@@ -102,7 +125,7 @@
         left: 10px;
         top: 10px;
         font-size: 40px;
-        text-shadow: 0 4px 6px #f9abab;
+        text-shadow: 0 4px 6px var(--theme-color);
     }
 </style>
 
@@ -117,8 +140,12 @@
             </div>
         </div>
         <div class="message-input">
-            <el-input v-model="message" type="textarea" rows="5" placeholder="Enter your message here..."></el-input>
-            <el-button type="primary" round size="small" @click="sendMessage" :loading="loading">Send</el-button>
+            <textarea v-model="message" rows="7" @keyup.enter="enterMessage" placeholder="輸入你的問題,回車可發送"></textarea>
+            <div class="btn-cell">
+                <el-button type="danger" round size="small" @click="clearMessage" :loading="loading">清除曆史</el-button>
+                <el-button type="primary" round size="small" color="var(--theme-color)" @click="sendMessage"
+                    :loading="loading">發送</el-button>
+            </div>
         </div>
     </div>
 
@@ -137,10 +164,17 @@
                 }
             },
             methods: {
+                enterMessage () {
+                    if (this.message.trim()) this.sendMessage();
+                },
+                clearMessage () {
+                    localStorage.removeItem('gpt-list-info');
+                    location.reload();
+                },
                 sendMessage () {
                     let message = this.message;
                     if (!message) {
-                        return this.$message.error('Please enter a message!');
+                        return this.$message.error('請輸入你的問題!');
                     }
                     this.loading = true;
                     this.message = "";
@@ -160,7 +194,7 @@
                             let chatBox = document.getElementById("chatBox");
                             if (data.error) {
                                 this.listInfo.push({
-                                    text: `Server error: ${data.error}`,
+                                    text: `服務異常: ${data.error}`,
                                     type: 1,
                                     status: 'error'
                                 })

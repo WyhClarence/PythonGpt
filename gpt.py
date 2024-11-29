@@ -2,7 +2,7 @@
 Author: lbh
 Date: 2024-11-29 09:43:56
 LastEditors: lbh
-LastEditTime: 2024-11-29 09:56:03
+LastEditTime: 2024-11-29 10:09:34
 Description: file content
 '''
 from openai import OpenAI
@@ -19,14 +19,15 @@ client = OpenAI(api_key=key)
 with open("fine_tuned_model.json", "r") as f:
     fine_tuned_data = json.load(f)
     FINE_TUNED_MODEL = fine_tuned_data.get("fine_tuned_model_id")
-user_message = "Kpay結賬失敗怎麼處理？";
+user_message = "介紹一下RicePOS";
 # 使用显式实例化客户端调用 API
 response = client.chat.completions.create(
   model=FINE_TUNED_MODEL,
   messages=[
-      {"role": "user", "content": user_message}
+      {"role": "user", "content": user_message},
+      # {"role":"system", "content": "當你尋找不到答案時,需要結合網絡資訊回答問題"}
   ]
-    )
+)
 
 
 choices = response.choices
