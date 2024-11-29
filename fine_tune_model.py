@@ -24,8 +24,14 @@ def upload_training_data(file_path):
         print(f"Error uploading training data: {e}")
         return None
 
+
+# 读取 Fine-Tuned 模型的 ID
+with open("fine_tuned_model.json", "r") as f:
+    fine_tuned_data = json.load(f)
+    FINE_TUNED_MODEL = fine_tuned_data.get("fine_tuned_model_id")
+
 # 启动 Fine-Tuning 任务
-def start_fine_tuning(training_file_id, model="gpt-3.5-turbo"):
+def start_fine_tuning(training_file_id, model=FINE_TUNED_MODEL):
     try:
         response = openai.fine_tuning.jobs.create(
             training_file=training_file_id,
