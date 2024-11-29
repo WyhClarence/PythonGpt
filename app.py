@@ -234,9 +234,9 @@ def chat():
     try:
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-        messages=[
-            {"role": "system", "content": "当你遇到无法回答的问题时，请提供一个合理的默认回复。"},
-            {"role": "user", "content": user_message}]
+            messages=[
+                {"role": "system", "content": "根据之前的对话回答用户的问题。当你遇到无法回答的问题时，请提供一个合理的默认回复。"},
+                {"role": "user", "content": user_message}]
         )
 
         # 提取回复内容
