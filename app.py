@@ -226,27 +226,41 @@ def chat_page():
     return render_template_string(html_content)
 
 
+# 存储对话历史（可以放在数据库中，或者在内存中保留）
+conversation_history = []
+
+
 # 接收用户消息并返回 ChatGPT 的响应
 # 接收用户消息并返回ChatGPT的响应
 @app.route('/chat', methods=['POST'])
 def chat():
     user_message = request.json.get('message')
+    # 将当前用户的消息添加到对话历史中
+    conversation_history.append({"role": "user", "content": user_message})
+    # 只保留最近的 5 轮对话
+    context = conversation_history[-10:]  # 保留最近的 5 轮用户和 5 轮助手的对话
+    # 构建消息体，保证将对话历史与当前消息一起传递给 API
+    messages = [
+        {"role": "system", "content": "根据之前的对话回答用户的问题。当你遇到无法回答的问题时，请提供一个合理的默认回复。"}
+    ]
+
+    # 添加历史对话
+    for message in context:
+        messages.append(message)
+
     try:
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-            messages=[
-                {"role": "system", "content": "根据之前的对话回答用户的问题。当你遇到无法回答的问题时，请提供一个合理的默认回复。"},
-                {"role": "user", "content": user_message}]
+            messages=messages
         )
 
         # 提取回复内容
         choices = response.choices
-        # print("choices" , choices)
-
         message = choices[0].message
-        # print('message',message)
         content = message.content
-        # print('content',content)
+
+        # 将助手的回复添加到对话历史中
+        conversation_history.append({"role": "assistant", "content": content})
 
         # 返回时明确指定 utf-8 编码
         return jsonify({"response": content}), 200
