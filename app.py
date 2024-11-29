@@ -5,6 +5,7 @@ import json
 from flask import Flask, request, jsonify, render_template_string
 import sys
 import io
+
 # 设置默认编码为utf-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # 创建 Flask 实例
@@ -22,10 +23,13 @@ logger = logging.getLogger(__name__)
 
 logger.debug(f"Using model ID: {FINE_TUNED_MODEL}")
 logger.debug(f"API Key: {key}")
+
+
 # 主页面路由
 @app.route('/')
 def index():
     return "Hello, this is the ChatGPT API integration demo!"
+
 
 # 显示聊天页面
 @app.route('/chat', methods=['GET'])
@@ -221,6 +225,7 @@ def chat_page():
     '''
     return render_template_string(html_content)
 
+
 # 接收用户消息并返回 ChatGPT 的响应
 # 接收用户消息并返回ChatGPT的响应
 @app.route('/chat', methods=['POST'])
@@ -229,7 +234,9 @@ def chat():
     try:
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-            messages=[{"role": "user", "content": user_message}]
+        messages=[
+            {"role": "system", "content": "当你遇到无法回答的问题时，请提供一个合理的默认回复。"},
+            {"role": "user", "content": user_message}]
         )
 
         # 提取回复内容
@@ -246,6 +253,7 @@ def chat():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 # 运行 Flask 应用
 if __name__ == '__main__':
