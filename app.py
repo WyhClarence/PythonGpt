@@ -36,192 +36,226 @@ def index():
 def chat_page():
     html_content = '''
     <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT By Wong</title>
-    <link rel="icon" href="https://hktest.ricepon.com/ricepon-service/favicon.ico" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
-</head>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #F0F0F6;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ChatGPT By Wong</title>
+        <link rel="icon" href="https://hktest.ricepon.com/ricepon-service/favicon.ico" />
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
+    </head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #F0F0F6;
+            --theme-color: rgb(10, 137, 226);
+        }
 
-    body::-webkit-scrollbar {
-        width: 6px;
-    }
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
 
-    body::-webkit-scrollbar-thumb {
-        background-color: #ccc;
-        border-radius: 10px;
-    }
+        body::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+        }
 
-    body::-webkit-scrollbar-track {
-        background-color: #f1f1f1;
-    }
+        body::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
 
-    #app {
-        width: 100%;
-        height: 100%;
-    }
+        #app {
+            width: 100%;
+            height: 100%;
+        }
 
-    .message-body {
-        width: 100%;
-        max-width: 800px;
-        min-height: 100%;
-        margin-left: 50%;
-        transform: translateX(-50%);
-    }
+        .message-body {
+            width: 100%;
+            max-width: 800px;
+            min-height: 100%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 250px;
+            background-color: #F0F0F6;
+        }
 
-    .message-cell {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-    }
+        .message-cell {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-    .message-cell .avatar {
-        width: 30px;
-        min-width: 30px;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        font-size: 12px;
-        background-color: #FFF;
-        border-radius: 4px;
-        margin-bottom: auto;
-    }
+        .message-cell .avatar {
+            width: 30px;
+            min-width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            background-color: #FFF;
+            border-radius: 4px;
+            margin-bottom: auto;
+        }
 
-    .message-cell .message {
-        margin-left: 10px;
-        font-size: 16px;
-    }
+        .message-cell .message {
+            margin-left: 10px;
+            font-size: 16px;
+        }
 
-    .message-cell.gpt .message {
-        background-color: #FFF;
-        padding: 10px;
-        border-radius: 8px;
-        line-height: 28px;
-    }
+        .message-cell.you .avatar {
+            background-color: #FFF;
+        }
 
-    .message-input {
-        width: 100%;
-        max-width: 800px;
-        margin: 10px auto;
-        box-shadow: 0 2px 6px #ccc;
-        padding: 10px;
-        border-radius: 8px;
-        display: flex;
-        background-color: #FFF;
-        flex-direction: column;
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+        .message-cell.gpt .avatar {
+            background-color: var(--theme-color);
+            color: #FFF;
+        }
 
-    .message-input .el-button {
-        margin-top: 10px;
-        margin-left: auto;
-    }
+        .message-cell.gpt .message {
+            background-color: #FFF;
+            padding: 10px;
+            border-radius: 8px;
+            line-height: 28px;
+        }
 
-    .title {
-        position: fixed;
-        left: 10px;
-        top: 10px;
-        font-size: 40px;
-        text-shadow: 0 4px 6px #f9abab;
-    }
-</style>
+        .message-input {
+            width: 100%;
+            max-width: 800px;
+            margin: 10px auto;
+            box-shadow: 0 2px 6px #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            background-color: #FFF;
+            flex-direction: column;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-<body>
-    <div id="app">
-        <div class="title">ChatGPT By Wong</div>
-        <div class="message-body">
-            <div v-for="item,index in listInfo" :key="index" class="message-cell"
-                :class="{you:item.type==0,gpt:item.type==1}">
-                <div class="avatar" v-text="item.type == 0 ? 'YOU' : 'GPT'"></div>
-                <div class="message" v-html="item.text"></div>
+        .message-input textarea {
+            resize: none;
+            border: 1px soid #efefef;
+            border-radius: 4px;
+            padding: 6px;
+        }
+
+        .message-input textarea:focus-visible {
+            outline: none;
+        }
+
+        .message-input .btn-cell {
+            margin-top: 10px;
+            margin-left: auto;
+        }
+
+        .title {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            font-size: 40px;
+            text-shadow: 0 4px 6px var(--theme-color);
+        }
+    </style>
+
+    <body>
+        <div id="app">
+            <div class="title">ChatGPT By Wong</div>
+            <div class="message-body">
+                <div v-for="item,index in listInfo" :key="index" class="message-cell"
+                    :class="{you:item.type==0,gpt:item.type==1}">
+                    <div class="avatar" v-text="item.type == 0 ? 'YOU' : 'GPT'"></div>
+                    <div class="message" v-html="item.text"></div>
+                </div>
+            </div>
+            <div class="message-input">
+                <textarea v-model="message" rows="7" @keyup.enter="enterMessage" placeholder="輸入你的問題,回車可發送"></textarea>
+                <div class="btn-cell">
+                    <el-button type="danger" round size="small" @click="clearMessage" :loading="loading">清除曆史</el-button>
+                    <el-button type="primary" round size="small" color="var(--theme-color)" @click="sendMessage"
+                        :loading="loading">發送</el-button>
+                </div>
             </div>
         </div>
-        <div class="message-input">
-            <el-input v-model="message" type="textarea" rows="5" placeholder="Enter your message here..."></el-input>
-            <el-button type="primary" round size="small" @click="sendMessage" :loading="loading">Send</el-button>
-        </div>
-    </div>
 
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: '',
-                listInfo: [],
-                loading: false
-            },
-            created () {
-                let listInfoStr = localStorage.getItem('gpt-list-info');
-                if (listInfoStr) {
-                    this.listInfo = JSON.parse(listInfoStr);
-                }
-            },
-            methods: {
-                sendMessage () {
-                    let message = this.message;
-                    if (!message) {
-                        return this.$message.error('Please enter a message!');
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: '',
+                    listInfo: [],
+                    loading: false
+                },
+                created () {
+                    let listInfoStr = localStorage.getItem('gpt-list-info');
+                    if (listInfoStr) {
+                        this.listInfo = JSON.parse(listInfoStr);
                     }
-                    this.loading = true;
-                    this.message = "";
-                    this.listInfo.push({
-                        text: message,
-                        type: 0
-                    })
-                    fetch('/chat', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ message: message })
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            let chatBox = document.getElementById("chatBox");
-                            if (data.error) {
-                                this.listInfo.push({
-                                    text: `Server error: ${data.error}`,
-                                    type: 1,
-                                    status: 'error'
-                                })
-                            } else {
-                                this.listInfo.push({
-                                    text: data.response,
-                                    type: 1,
-                                    status: 'ok'
-                                })
-                            }
-                            this.loading = false;
-                            localStorage.setItem('gpt-list-info', JSON.stringify(this.listInfo));
+                },
+                methods: {
+                    enterMessage () {
+                        if (this.message.trim()) this.sendMessage();
+                    },
+                    clearMessage () {
+                        localStorage.removeItem('gpt-list-info');
+                        location.reload();
+                    },
+                    sendMessage () {
+                        let message = this.message;
+                        if (!message) {
+                            return this.$message.error('請輸入你的問題!');
+                        }
+                        this.loading = true;
+                        this.message = "";
+                        this.listInfo.push({
+                            text: message,
+                            type: 0
                         })
-                        .catch(error => {
-                            this.loading = false;
-                            console.error('Error:', error);
-                        });
+                        fetch('/chat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ message: message })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                let chatBox = document.getElementById("chatBox");
+                                if (data.error) {
+                                    this.listInfo.push({
+                                        text: `服務異常: ${data.error}`,
+                                        type: 1,
+                                        status: 'error'
+                                    })
+                                } else {
+                                    this.listInfo.push({
+                                        text: data.response,
+                                        type: 1,
+                                        status: 'ok'
+                                    })
+                                }
+                                this.loading = false;
+                                localStorage.setItem('gpt-list-info', JSON.stringify(this.listInfo));
+                            })
+                            .catch(error => {
+                                this.loading = false;
+                                console.error('Error:', error);
+                            });
+                    }
                 }
-            }
-        })
-    </script>
-</body>
+            })
+        </script>
+    </body>
 
-</html>
+    </html>
     '''
     return render_template_string(html_content)
 
