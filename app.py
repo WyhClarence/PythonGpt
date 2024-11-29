@@ -3,6 +3,10 @@ from openai import OpenAI
 import logging
 import json
 from flask import Flask, request, jsonify, render_template_string
+import sys
+import io
+# 设置默认编码为utf-8
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # 创建 Flask 实例
 app = Flask(__name__)
 key = os.getenv("OPENAI_API_KEY")
@@ -232,10 +236,16 @@ def chat():
         )
 
         # 提取回复内容
-        chat_response = response['choices'][0]['message']['content']
+        choices = response.choices
+        # print("choices" , choices)
+
+        message = choices[0].message
+        # print('message',message)
+        content = message.content
+        # print('content',content)
 
         # 返回时明确指定 utf-8 编码
-        return jsonify({"response": chat_response}), 200
+        return jsonify({"response": content}), 200
 
     except Exception as e:
         # 返回时明确指定 utf-8 编码，并转换为字符串以避免编码错误
