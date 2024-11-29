@@ -7,11 +7,40 @@ import time
 openai.api_key = os.getenv("OPENAI_API_KEY")
 if openai.api_key is None:
     openai.api_key = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# 要插入的 system 数据
+SYSTEM_MESSAGE = {
+    "role": "system",
+    "content": "你是一个专业的餐饮管理助手，帮助用户完成与餐饮管理相关的各种问题；帮助用户进行餐饮相关的配置；根据之前的对话回答用户的问题。当你遇到无法回答的问题时，请提供一个合理的默认回复。我們公司名稱是GingerSoft, 產品名稱是RicePOS，最新版本為1.4.0_268，位於中國香港；平時用繁體字回復用戶，如果用戶用其他語言，請將問答轉為用戶的語言回復"
+}
+
+# 在上传之前处理训练数据
+def preprocess_training_data(file_path):
+    processed_data = []
+
+    # 读取原始 .jsonl 文件并处理每一行
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            data = json.loads(line.strip())
+            # 在每条对话前插入 system 数据
+            data["messages"].insert(0, SYSTEM_MESSAGE)
+            processed_data.append(data)
+
+    # 生成新的文件路径用于保存处理后的数据
+    new_file_path = "processed_" + file_path
+    with open(new_file_path, "w", encoding="utf-8") as f:
+        for item in processed_data:
+            f.write(json.dumps(item, ensure_ascii=False) + "\n")
+
+    return new_file_path
+
 
 # 上传训练数据
 def upload_training_data(file_path):
     try:
-        with open(file_path, "rb") as f:
+        # 预处理训练数据，插入 system 信息
+        processed_file_path = preprocess_training_data(file_path)
+
+        with open(processed_file_path, "rb") as f:
             response = openai.files.create(
                 file=f,
                 purpose='fine-tune'
@@ -23,7 +52,6 @@ def upload_training_data(file_path):
     except Exception as e:
         print(f"Error uploading training data: {e}")
         return None
-
 
 # 读取 Fine-Tuned 模型的 ID
 with open("fine_tuned_model.json", "r") as f:
