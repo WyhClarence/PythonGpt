@@ -272,22 +272,18 @@ def chat():
     conversation_history.append({"role": "user", "content": user_message})
     # 只保留最近的 5 轮对话
     context = conversation_history[-10:]  # 保留最近的 5 轮用户和 5 轮助手的对话
-    # 构建消息体，保证将对话历史与当前消息一起传递给 API
-    # messages = [{"role": "user", "content": user_message}]
-    #
-    # # 添加历史对话
-    # for message in context:
-    #     messages.append(message)
 
-    # 如果历史对话超过了限制，进行摘要
     if len(context) > 5:
         # 获取摘要
         summary = generate_summary([msg for msg in context if msg["role"] == "user" or msg["role"] == "assistant"])
         # 用摘要替换较早的历史记录
         context = [{"role": "system", "content": summary}]
+    else:
+        # 保留用户和助手的对话历史
+        context = [{"role": msg["role"], "content": msg["content"]} for msg in context]
 
     # 构建消息体，保证将对话历史与当前消息一起传递给 API
-    messages = [{"role": "user", "content": user_message}] + context
+    messages = context + [{"role": "user", "content": user_message}]  # 只添加一次 user_message
 
     try:
         response = openai.chat.completions.create(
