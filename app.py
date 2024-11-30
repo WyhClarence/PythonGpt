@@ -333,11 +333,11 @@ def generate_summary(messages):
 
         # 解析并返回摘要内容
         choices = response.choices
-        logger.debug("摘要3：" + choices[0])
+        logger.debug("摘要3：" + str(choices[0]))
         message = choices[0].message
-        logger.debug("摘要2：" + message)
+        logger.debug("摘要2：" + str(message))
         summary = message.content
-        logger.debug("摘要：" + summary)
+        logger.debug("摘要：" + str(summary))
         return summary
 
     except Exception as e:
