@@ -269,7 +269,7 @@ conversation_history = []
 def chat():
     user_message = request.json.get('message')
     # 只保留最近的 10 条消息（或者你可以根据需要调整这个值）
-    context = conversation_history[-10:]
+    context = conversation_history[-4:]
 
     # 如果历史对话超过了限制，进行摘要
     # if len(context) > 1:
@@ -289,10 +289,10 @@ def chat():
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
             messages=messages,
-            temperature=0.2,  # 控制生成内容的保守性 0.0 到 0.3：模型的回答会更加确定和保守;如 0.7 到 1.0：模型的回答会更加随机、多样，适用于创意性或者不那么确定的回答场景。
-            top_p=0.9,  # 如 0.1 到 0.3：限制生成的词汇范围，回答更加确定且集中在模型认为最合适的几个选项中。如 0.7 到 1.0：增加词汇范围，回答会更加多样化，适合创造性对话。
-            max_tokens=150,  # 限制回答內容長度
-            n=1,  # 用于指定生成多少个回答。默认情况下，n 的值为 1
+            # temperature=0.2,  # 控制生成内容的保守性 0.0 到 0.3：模型的回答会更加确定和保守;如 0.7 到 1.0：模型的回答会更加随机、多样，适用于创意性或者不那么确定的回答场景。
+            # top_p=0.9,  # 如 0.1 到 0.3：限制生成的词汇范围，回答更加确定且集中在模型认为最合适的几个选项中。如 0.7 到 1.0：增加词汇范围，回答会更加多样化，适合创造性对话。
+            # max_tokens=150,  # 限制回答內容長度
+            # n=1,  # 用于指定生成多少个回答。默认情况下，n 的值为 1
         )
 
         # 提取回复内容
