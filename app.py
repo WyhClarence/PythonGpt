@@ -272,14 +272,14 @@ def chat():
     context = conversation_history[-10:]
 
     # 如果历史对话超过了限制，进行摘要
-    if len(context) > 1:
-        # 获取摘要
-        summary = generate_summary(context)
-        # 用摘要替换较早的历史记录
-        context = [{"role": "system", "content": summary}]
-    else:
-        # 保留用户和助手的对话历史
-        context = [{"role": msg["role"], "content": msg["content"]} for msg in context]
+    # if len(context) > 1:
+    #     # 获取摘要
+    #     summary = generate_summary(context)
+    #     # 用摘要替换较早的历史记录
+    #     context = [{"role": "system", "content": summary}]
+    # else:
+    #     # 保留用户和助手的对话历史
+    #     context = [{"role": msg["role"], "content": msg["content"]} for msg in context]
 
     # 构建消息体，确保在 context 中已经包括了历史对话（摘要或原文）
     # 这里只添加当前用户消息
@@ -333,11 +333,8 @@ def generate_summary(messages):
 
         # 解析并返回摘要内容
         choices = response.choices
-        logger.debug("摘要3：" + str(choices[0]))
         message = choices[0].message
-        logger.debug("摘要2：" + str(message))
         summary = message.content
-        logger.debug("摘要：" + str(summary))
         return summary
 
     except Exception as e:
