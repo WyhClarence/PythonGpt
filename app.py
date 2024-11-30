@@ -300,12 +300,10 @@ def chat():
         message = choices[0].message
         content = message.content
 
-        # 将助手的回复添加到对话历史中
-        conversation_history.append({"role": "assistant", "content": content})
-
         # 将用户问题也添加到对话历史中
         conversation_history.append({"role": "user", "content": user_message})
-
+        # 将助手的回复添加到对话历史中
+        conversation_history.append({"role": "assistant", "content": content})
         # 返回时明确指定 utf-8 编码
         return jsonify({"response": content}), 200
 
@@ -334,8 +332,10 @@ def generate_summary(messages):
         )
 
         # 解析并返回摘要内容
-        summary = response['choices'][0]['message']['content']
-        return summary
+        choices = response.choices
+        message = choices[0].message
+        summary = message.content
+        return jsonify({"response": summary}), 200
 
     except Exception as e:
         print(f"Error generating summary: {e}")
