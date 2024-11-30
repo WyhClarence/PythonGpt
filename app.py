@@ -272,7 +272,7 @@ def chat():
     context = conversation_history[-10:]
 
     # 如果历史对话超过了限制，进行摘要
-    if len(context) > 5:
+    if len(context) > 1:
         # 获取摘要
         summary = generate_summary([msg for msg in context if msg["role"] == "user" or msg["role"] == "assistant"])
         # 用摘要替换较早的历史记录
@@ -316,7 +316,6 @@ def chat():
 # 生成对话摘要（可以使用GPT或简单规则）
 def generate_summary(messages):
     summary_prompt = "请将以下对话总结为简短的几句话：\n" + "\n".join([msg["content"] for msg in messages])
-    logger.debug("總結前:" + messages)
     response = openai.Completion.create(
         model="gpt-3.5-turbo",  # 或使用适合的模型
         prompt=summary_prompt,
