@@ -38,9 +38,9 @@ def preprocess_training_data(file_path):
 def upload_training_data(file_path):
     try:
         # 预处理训练数据，插入 system 信息
-        processed_file_path = preprocess_training_data(file_path)
+        # processed_file_path = preprocess_training_data(file_path)
 
-        with open(processed_file_path, "rb") as f:
+        with open(file_path, "rb") as f:
             response = openai.files.create(
                 file=f,
                 purpose='fine-tune'

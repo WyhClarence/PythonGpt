@@ -260,11 +260,10 @@ def chat_page():
     return render_template_string(html_content)
 
 
-# 存储对话历史（可以放在数据库中，或者在内存中保留）
+# 存储对话历史
 conversation_history = []
 
 
-# 接收用户消息并返回 ChatGPT 的响应
 # 接收用户消息并返回ChatGPT的响应
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -274,16 +273,30 @@ def chat():
     # 只保留最近的 5 轮对话
     context = conversation_history[-10:]  # 保留最近的 5 轮用户和 5 轮助手的对话
     # 构建消息体，保证将对话历史与当前消息一起传递给 API
-    messages = [{"role": "user", "content": user_message}]
+    # messages = [{"role": "user", "content": user_message}]
+    #
+    # # 添加历史对话
+    # for message in context:
+    #     messages.append(message)
 
-    # 添加历史对话
-    for message in context:
-        messages.append(message)
+    # 如果历史对话超过了限制，进行摘要
+    if len(context) > 5:
+        # 获取摘要
+        summary = generate_summary([msg for msg in context if msg["role"] == "user" or msg["role"] == "assistant"])
+        # 用摘要替换较早的历史记录
+        context = [{"role": "system", "content": summary}]
+
+    # 构建消息体，保证将对话历史与当前消息一起传递给 API
+    messages = [{"role": "user", "content": user_message}] + context
 
     try:
         response = openai.chat.completions.create(
             model=FINE_TUNED_MODEL,
-            messages=messages
+            messages=messages,
+            temperature=0.2,  # 控制生成内容的保守性 0.0 到 0.3：模型的回答会更加确定和保守;如 0.7 到 1.0：模型的回答会更加随机、多样，适用于创意性或者不那么确定的回答场景。
+            top_p=0.9,  # 如 0.1 到 0.3：限制生成的词汇范围，回答更加确定且集中在模型认为最合适的几个选项中。如 0.7 到 1.0：增加词汇范围，回答会更加多样化，适合创造性对话。
+            max_tokens=150,  # 限制回答內容長度
+            n=1,  # 用于指定生成多少个回答。默认情况下，n 的值为 1
         )
 
         # 提取回复内容
@@ -299,6 +312,20 @@ def chat():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+# 生成对话摘要（可以使用GPT或简单规则）
+def generate_summary(messages):
+    summary_prompt = "请将以下对话总结为简短的几句话：\n" + "\n".join([msg["content"] for msg in messages])
+    logger.debug("總結前:" + messages)
+    response = openai.Completion.create(
+        model="gpt-3.5-turbo",  # 或使用适合的模型
+        prompt=summary_prompt,
+        max_tokens=100  # 控制摘要的长度
+    )
+    logger.debug("總結後:" + response.choices)
+
+    return response.choices[0].text.strip()
 
 
 # 运行 Flask 应用
