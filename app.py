@@ -315,15 +315,26 @@ def chat():
 
 # 生成对话摘要（可以使用GPT或简单规则）
 def generate_summary(messages):
-    summary_prompt = "请将以下对话总结为简短的几句话：\n" + "\n".join([msg["content"] for msg in messages])
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",  # 或使用适合的模型
-        prompt=summary_prompt,
-        max_tokens=100  # 控制摘要的长度
-    )
-    logger.debug("總結後:" + response.choices[0].message.content)
+    # 将对话消息转换为字符串以便生成摘要
+    summary_prompt = "".join([msg["content"] for msg in messages])
+    logger.debug("內容：" + summary_prompt)
+    try:
+        # 调用 OpenAI API 生成摘要
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",  # 可以使用适合的模型，如微调模型
+            messages=[{"role": "system", "content": "请根据以下对话内容生成摘要："}] + [
+                {"role": "user", "content": summary_prompt}],
+            temperature=0.5,
+            max_tokens=100  # 控制摘要的长度
+        )
 
-    return response.choices[0].message.content.strip()
+        # 解析并返回摘要内容
+        summary = response['choices'][0]['message']['content']
+        return summary
+
+    except Exception as e:
+        print(f"Error generating summary: {e}")
+        return ""
 
 
 # 运行 Flask 应用
