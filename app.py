@@ -268,11 +268,10 @@ conversation_history = []
 @app.route('/chat', methods=['POST'])
 def chat():
     user_message = request.json.get('message')
-    # 将当前用户的消息添加到对话历史中
-    conversation_history.append({"role": "user", "content": user_message})
-    # 只保留最近的 5 轮对话
-    context = conversation_history[-10:]  # 保留最近的 5 轮用户和 5 轮助手的对话
+    # 只保留最近的 10 条消息（或者你可以根据需要调整这个值）
+    context = conversation_history[-10:]
 
+    # 如果历史对话超过了限制，进行摘要
     if len(context) > 5:
         # 获取摘要
         summary = generate_summary([msg for msg in context if msg["role"] == "user" or msg["role"] == "assistant"])
@@ -282,8 +281,9 @@ def chat():
         # 保留用户和助手的对话历史
         context = [{"role": msg["role"], "content": msg["content"]} for msg in context]
 
-    # 构建消息体，保证将对话历史与当前消息一起传递给 API
-    messages = context + [{"role": "user", "content": user_message}]  # 只添加一次 user_message
+    # 构建消息体，确保在 context 中已经包括了历史对话（摘要或原文）
+    # 这里只添加当前用户消息
+    messages = context + [{"role": "user", "content": user_message}]  # 只在这里添加一次用户消息
 
     try:
         response = openai.chat.completions.create(
@@ -302,6 +302,9 @@ def chat():
 
         # 将助手的回复添加到对话历史中
         conversation_history.append({"role": "assistant", "content": content})
+
+        # 将用户问题也添加到对话历史中
+        conversation_history.append({"role": "user", "content": user_message})
 
         # 返回时明确指定 utf-8 编码
         return jsonify({"response": content}), 200
