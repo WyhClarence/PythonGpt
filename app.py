@@ -333,15 +333,15 @@ def generate_summary(messages):
 
         # 解析并返回摘要内容
         choices = response.choices
-        logger.debug("摘要3：" + choices)
+        logger.debug("摘要3：" + choices[0])
         message = choices[0].message
         logger.debug("摘要2：" + message)
         summary = message.content
         logger.debug("摘要：" + summary)
-        return jsonify({"response": summary}), 200
+        return summary
 
     except Exception as e:
-        print(f"Error generating summary: {e}")
+        logger.debug(f"Error generating summary: {e}")
         return ""
 
 
