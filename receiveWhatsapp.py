@@ -8,3 +8,4 @@ def new_app1_route():
 
 def init_app(app):
     app.register_blueprint(new_app1_bp)
+    print("Blueprint 'new_app1' has been registered.")  # 添加调试输出

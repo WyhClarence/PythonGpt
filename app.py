@@ -13,7 +13,12 @@ import receiveWhatsapp
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # 创建 Flask 实例
 app = Flask(__name__)
+# 初始化并注册所有模块
+receiveWhatsapp.init_app(app)
 
+# 调试输出 Flask 路由
+print("Registered routes:")
+print(app.url_map)  # 输出已注册的 URL 路径，帮助确认路由是否存在
 # 自动加载当前目录下所有的 .py 文件（排除 __init__.py 和 app.py）
 # def load_all_modules():
 #     for filename in os.listdir(os.getcwd()):
@@ -367,5 +372,4 @@ def generate_summary(messages):
 
 # 运行 Flask 应用
 if __name__ == '__main__':
-    receiveWhatsapp.init_app(app)
     app.run(debug=True, host='0.0.0.0', port=5000)
