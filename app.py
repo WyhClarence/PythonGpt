@@ -11,11 +11,15 @@ import receiveWhatsapp
 
 # 设置默认编码为utf-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 # 创建 Flask 实例
 app = Flask(__name__)
 # 初始化并注册所有模块
 receiveWhatsapp.init_app(app)
 
+# 调试输出 Flask 路由
+logger.debug(f"Registered routes: {app.url_map}")
 # 自动加载当前目录下所有的 .py 文件（排除 __init__.py 和 app.py）
 # def load_all_modules():
 #     for filename in os.listdir(os.getcwd()):
@@ -43,8 +47,6 @@ with open("fine_tuned_model.json", "r") as f:
     fine_tuned_data = json.load(f)
     FINE_TUNED_MODEL = fine_tuned_data.get("fine_tuned_model_id")
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
 
 logger.debug(f"Using model ID: {FINE_TUNED_MODEL}")
 logger.debug(f"API Key: {key}")
