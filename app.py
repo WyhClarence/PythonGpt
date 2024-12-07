@@ -1,11 +1,11 @@
-import importlib
-import os
-import openai
-import logging
-import json
-from flask import Flask, request, jsonify, render_template_string
-import sys
 import io
+import json
+import logging
+import os
+import sys
+
+import openai
+from flask import Flask, request, jsonify, render_template_string
 
 import receiveWhatsapp
 
@@ -46,7 +46,6 @@ openai.api_key = key
 with open("fine_tuned_model.json", "r") as f:
     fine_tuned_data = json.load(f)
     FINE_TUNED_MODEL = fine_tuned_data.get("fine_tuned_model_id")
-
 
 logger.debug(f"Using model ID: {FINE_TUNED_MODEL}")
 logger.debug(f"API Key: {key}")
