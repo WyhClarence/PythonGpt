@@ -13,25 +13,23 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 app = Flask(__name__)
 
 # 自动加载当前目录下所有的 .py 文件（排除 __init__.py 和 app.py）
-def load_all_modules():
-    for filename in os.listdir(os.getcwd()):
-        if filename.endswith(".py") and filename != "app.py":
-            module_name = filename[:-3]  # 去掉 .py 后缀
-            try:
-                # 动态导入模块
-                module = importlib.import_module(module_name)
-                # 假设每个模块都定义了一个 init_app() 函数来初始化自己的路由
-                if hasattr(module, 'init_app'):
-                    module.init_app(app)
-                else:
-                    print(f"模块 {module_name} 中未找到 'init_app' 函数，跳过该模块。")
-            except Exception as e:
-                print(f"导入模块 {module_name} 失败: {e}")
-
-# 在 Flask 应用启动时自动加载所有模块
-load_all_modules()
-
-
+# def load_all_modules():
+#     for filename in os.listdir(os.getcwd()):
+#         if filename.endswith(".py") and filename != "app.py":
+#             module_name = filename[:-3]  # 去掉 .py 后缀
+#             try:
+#                 # 动态导入模块
+#                 module = importlib.import_module(module_name)
+#                 # 假设每个模块都定义了一个 init_app() 函数来初始化自己的路由
+#                 if hasattr(module, 'init_app'):
+#                     module.init_app(app)
+#                 else:
+#                     print(f"模块 {module_name} 中未找到 'init_app' 函数，跳过该模块。")
+#             except Exception as e:
+#                 print(f"导入模块 {module_name} 失败: {e}")
+#
+# # 在 Flask 应用启动时自动加载所有模块
+# load_all_modules()
 
 key = os.getenv("OPENAI_API_KEY")
 # 实例化一个 OpenAI 客户端
