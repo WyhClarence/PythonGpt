@@ -7,6 +7,8 @@ from flask import Flask, request, jsonify, render_template_string
 import sys
 import io
 
+import receiveWhatsapp
+
 # 设置默认编码为utf-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # 创建 Flask 实例
@@ -365,4 +367,5 @@ def generate_summary(messages):
 
 # 运行 Flask 应用
 if __name__ == '__main__':
+    receiveWhatsapp.init_app(app)
     app.run(debug=True, host='0.0.0.0', port=5000)
